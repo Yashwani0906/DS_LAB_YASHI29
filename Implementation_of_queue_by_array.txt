@@ -1,0 +1,56 @@
+//Implementaion  of Queue by array
+#include <stdio.h>
+#define max 10
+int queue[max];
+int front =-1,rear=-1;
+//Inserting queue
+void inqueue(int x){
+    if(rear==max-1){
+        printf("Queue overflowed");
+        return;
+    }
+    if(front ==-1){
+        front =0;
+   
+}
+    queue[++rear]=x;
+    printf("%d inserted\n",x);
+}
+//Deleting queue
+void delqueue(){
+    if(front == -1|| front>rear){
+        printf("Queue underflow\n");
+        return;
+    }
+    printf("Deleted: %d\n",queue[front++]);
+    if(front>rear){
+        front=rear+-1;
+    }
+    
+    
+}
+//Displaying queue
+void display(){
+    if(front ==-1){
+        printf("Queue is empty\n");
+        return;
+    }
+    for(int i =front;i<=rear;i++){
+        printf("%d ",queue[i]);
+    }
+    printf("\n");
+    
+}
+int main(){
+    inqueue(10);
+    inqueue(20);
+    inqueue(30);
+    inqueue(40);
+    inqueue(90);
+    inqueue(60);
+    display();
+    delqueue();
+    display();
+    return 0;
+}
+
